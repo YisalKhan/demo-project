@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UsersComponent } from './users/users.component';
+import { EditUsersComponent } from './edit-users/edit-users.component';
 
-const routes: Routes = [];
+const appRoutes: Routes = [
+  { path: '', component: UsersComponent },
+  { path: 'new', component: EditUsersComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

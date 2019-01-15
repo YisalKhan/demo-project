@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router : Router,
+    private route: ActivatedRoute,
+  ) { }
 
   users = [
     {
@@ -26,6 +30,9 @@ export class UsersComponent implements OnInit {
     },
   ];
 
+  onNewUser() {
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
   ngOnInit() {
   }
 
