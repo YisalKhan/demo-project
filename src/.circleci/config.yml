@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/my-project
+    working_directory: ~/demo-project
     docker:
       - image: circleci/node:8-browsers
     steps:
