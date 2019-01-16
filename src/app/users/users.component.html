@@ -6,10 +6,10 @@
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    <a 
+    <a (click) = "onEditUser(i)"
       style="cursor:pointer;"
       class="list-group-item clearfix"
-      *ngFor = "let user of users">
+      *ngFor = "let user of users; let i = index">
       <div class="pull-left">
         <h4 class="list-group-item-heading"> {{ user.name }} </h4>
         <p class="list-group-item-text"> {{ user.employee }} </p>
