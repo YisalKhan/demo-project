@@ -1,3 +1,74 @@
-<p>
-  edit-users works!
-</p>
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="usersForm" (ngSubmit)="onSubmit()" >
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!usersForm.valid">Save</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="onCancel()"  >Cancel</button>
+            <button
+            type="button"
+            class="btn btn-danger"
+            (click)="onDelete()"
+            *ngIf="editMode" >Delete</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              formControlName="name"  >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <input
+              type="text"
+              id="gender"
+              class="form-control"
+              formControlName="gender"
+              #gender  >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="employee">Employee At</label>
+            <input
+              type="text"
+              id="employee"
+              class="form-control"
+              formControlName="employee"
+              #employee  >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="occupation">Occupation</label>
+            <input
+              type="text"
+              id="occupation"
+              class="form-control"
+              formControlName="occupation"
+              #occupation >
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
