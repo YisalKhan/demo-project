@@ -19,7 +19,10 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should render title in Header', () => {
+    const fixture = TestBed.createComponent(HeaderComponent);
+    fixture.detectChanges();
+    const complied = fixture.debugElement.nativeElement;
+    expect(complied.querySelector('.navbar-brand').textContent).toContain('Demo Project');
   });
 });

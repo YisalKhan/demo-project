@@ -1,16 +1,23 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { EditUsersComponent } from './edit-users.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { UsersService } from '../shared/users.service';
 
 describe('EditUsersComponent', () => {
   let component: EditUsersComponent;
   let fixture: ComponentFixture<EditUsersComponent>;
+  let userService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditUsersComponent ]
+      imports: [ RouterTestingModule, ReactiveFormsModule ],
+      declarations: [ EditUsersComponent ],
+      providers: [UsersService]
     })
     .compileComponents();
+    userService = TestBed.get(UsersService);
   }));
 
   beforeEach(() => {
@@ -18,6 +25,10 @@ describe('EditUsersComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  it('should inject Users Service', inject([UsersService], (injectedService: UsersService) => {
+    expect(injectedService).toBe(userService);
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
