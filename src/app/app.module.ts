@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
 import { UsersComponent } from './users/users.component';
 import { EditUsersComponent } from './edit-users/edit-users.component';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EditUsersComponent } from './edit-users/edit-users.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Router
   ],
   providers: [],
   bootstrap: [AppComponent]
