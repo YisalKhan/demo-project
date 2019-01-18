@@ -48,10 +48,4 @@ describe('EditUsersComponent', () => {
     expect(errors['required']).toBeTruthy();
   });
 
-  it('submitting a form should save user', () => {
-    expect(component.usersForm.valid).toBeFalsy();
-    let user : Users;
-    component.onSubmit();
-    expect(component.onSubmit()).toBe();
-  });
 });
