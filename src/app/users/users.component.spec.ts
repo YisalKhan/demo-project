@@ -1,23 +1,33 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 
 import { UsersComponent } from './users.component';
-import { Users } from '../shared/users.module';
 import { UsersService } from '../shared/users.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { EditUsersComponent } from '../edit-users/edit-users.component';
+import { ReactiveFormsModule } from '@angular/forms';
+// import { SpyLocation } from '@angular/common/testing';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+// import { RouterModule } from '@angular/router';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
   let fixture: ComponentFixture<UsersComponent>;
   let testbedService;
+  let router: Router;
+  let location: Location;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ RouterTestingModule ],
-      declarations: [ UsersComponent ],
+      imports: [ RouterTestingModule, ReactiveFormsModule],
+      declarations: [ UsersComponent, EditUsersComponent ],
       providers: [UsersService]
     })
     .compileComponents();
     testbedService = TestBed.get(UsersService);
+    router = TestBed.get(Router);
+    location = TestBed.get(Location);
   }));
 
   beforeEach(() => {
@@ -33,5 +43,22 @@ describe('UsersComponent', () => {
 
   it('Should Inject Users Service', inject([UsersService], (injectService : UsersService) => {
     expect(injectService).toBe(testbedService);
-  }))
+  }));
+
+  it('should click the button', async(() => {
+    spyOn(component, 'onNewUser');
+
+    let button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+
+    fixture.whenStable().then(() => {
+      expect(component.onNewUser).toHaveBeenCalled();
+    });
+  }));
+
+  it('navigate to ', fakeAsync(() => {
+    router.navigate(['']);
+    tick();
+    expect(location.path()).toBe('/');
+  }));
 });
